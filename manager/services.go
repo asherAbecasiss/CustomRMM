@@ -1,6 +1,9 @@
 package main
 
 import (
+	"fmt"
+	"strconv"
+
 	"github.com/docker/docker/api/types/swarm"
 )
 
@@ -16,6 +19,21 @@ func CheckForNode(nodes []swarm.Node) int {
 }
 
 func CheckForServices(services []swarm.Service) int {
+	for _, v := range services {
+		//temp := v.ServiceStatus.DesiredTasks
+		needToBy := fmt.Sprint(v.ServiceStatus.RunningTasks)
+		repl := fmt.Sprint(v.ServiceStatus.DesiredTasks)
+		// fmt.Println(nn)
+		// fmt.Println(b)
+
+		i, _ := strconv.Atoi(needToBy)
+		j, _ := strconv.Atoi(repl)
+
+		if i != j {
+			return 2
+		}
+	}
+
 	return 0
 }
 
