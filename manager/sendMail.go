@@ -122,7 +122,9 @@ func MailType(typeOfMessage int, se ServerInfo) {
 		log.Print("Swarm Node ERROR")
 		SendMail("Swarm Node ERROR. Server IP : "+se.ServerIp, fmt.Sprint(se.SwarmNode))
 	case 2:
-		fmt.Println("two")
+		log.Print("Swarm Services ERROR")
+		services := fmt.Sprint(se.DockerServices)
+		SendMail("Swarm Services ERROR. Server IP : "+se.ServerIp, services)
 	case 3:
 		log.Print("Multiple files in queue-main.")
 		SendMail("Multiple files in queue-main. Server IP : "+se.ServerIp,"if number = -100  no such file or directory\n"+ fmt.Sprint(se.CountFils))
