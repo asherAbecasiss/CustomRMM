@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"net/smtp"
 	"path/filepath"
+	"strconv"
 	"strings"
 )
 
@@ -130,8 +131,15 @@ func MailType(typeOfMessage int, se ServerInfo) {
 			repl := fmt.Sprint(v.ServiceStatus.DesiredTasks)
 			// fmt.Println(nn)
 			// fmt.Println(b)
+			i, _ := strconv.Atoi(needToBy)
+			var point string = ""
+			if i == 0 {
+				point = "--> "
+			} else {
+				point = ""
+			}
 
-			temp += v.Spec.Name + needToBy + "/" + repl + "\n"
+			temp += point + v.Spec.Name + " " + needToBy + "/" + repl + "\n"
 
 		}
 		SendMail("Swarm Services ERROR. Server IP : "+se.ServerIp, temp)
