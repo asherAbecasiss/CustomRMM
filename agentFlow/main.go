@@ -10,6 +10,9 @@ import (
 )
 
 func main() {
+
+	log.Print("Agent runing!")
+
 	serverData := GetInfoForPc()
 
 	// fileBytes, err := ioutil.ReadFile("info/info.txt")
