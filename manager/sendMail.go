@@ -15,7 +15,6 @@ import (
 
 var serverName = ""
 
-
 var (
 	host       = "smtp.gmail.com"
 	username   = ""
@@ -123,11 +122,22 @@ func MailType(typeOfMessage int, se ServerInfo) {
 		SendMail("Swarm Node ERROR. Server IP : "+se.ServerIp, fmt.Sprint(se.SwarmNode))
 	case 2:
 		log.Print("Swarm Services ERROR")
-		services := fmt.Sprint(se.DockerServices)
-		SendMail("Swarm Services ERROR. Server IP : "+se.ServerIp, services)
+		// services := fmt.Sprint(se.DockerServices)
+		var temp string
+		for _, v := range se.DockerServices {
+			//temp := v.ServiceStatus.DesiredTasks
+			needToBy := fmt.Sprint(v.ServiceStatus.RunningTasks)
+			repl := fmt.Sprint(v.ServiceStatus.DesiredTasks)
+			// fmt.Println(nn)
+			// fmt.Println(b)
+
+			temp += v.Spec.Name + needToBy + "/" + repl + "\n"
+
+		}
+		SendMail("Swarm Services ERROR. Server IP : "+se.ServerIp, temp)
 	case 3:
 		log.Print("Multiple files in queue-main.")
-		SendMail("Multiple files in queue-main. Server IP : "+se.ServerIp,"if number = -100  no such file or directory\n"+ fmt.Sprint(se.CountFils))
+		SendMail("Multiple files in queue-main. Server IP : "+se.ServerIp, "if number = -100  no such file or directory\n"+fmt.Sprint(se.CountFils))
 
 	case 4:
 		log.Print("Disk space less then 50 Gb. ")
@@ -138,7 +148,7 @@ func MailType(typeOfMessage int, se ServerInfo) {
 	case 5:
 		log.Print("Mem Percent high")
 		m := fmt.Sprint(se.MemoryPercent)
-		
+
 		SendMail("Memory Percent High. Server IP : "+se.ServerIp, m)
 	}
 
