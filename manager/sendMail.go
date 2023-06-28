@@ -132,8 +132,9 @@ func MailType(typeOfMessage int, se ServerInfo) {
 			// fmt.Println(nn)
 			// fmt.Println(b)
 			i, _ := strconv.Atoi(needToBy)
+			j, _ := strconv.Atoi(repl)
 			var point string = ""
-			if i == 0 {
+			if i != j {
 				point = "--> "
 			} else {
 				point = ""
