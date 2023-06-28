@@ -1,0 +1,25 @@
+Date: 2023-06-21 15:05:59 
+ 
+server ip: 10.100.102.92
+free disk space: 769 GB
+Memory Percent: 19% 
+ 
+-------------
+ID        NAME      MODE      REPLICAS   IMAGE     PORTS
+ 
+-------------
+ID                            HOSTNAME   STATUS    AVAILABILITY   MANAGER STATUS   ENGINE VERSION
+mm3ilksl1zn7f47l1k5axjmr7 *   asher      Ready     Active         Leader           24.0.2
+ 
+PING 192.168.14.42 (192.168.14.42) 56(84) bytes of data.
+
+--- 192.168.14.42 ping statistics ---
+2 packets transmitted, 0 received, 100% packet loss, time 1006ms
+
+ 
+-------------PING
+PING 192.168.14.7 (192.168.14.7) 56(84) bytes of data.
+
+--- 192.168.14.7 ping statistics ---
+2 packets transmitted, 0 received, 100% packet loss, time 1030ms
+
